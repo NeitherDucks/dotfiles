@@ -1,0 +1,59 @@
+{
+    "layer": "top",
+    "output": [
+        "DP-1",
+        "DP-2",
+        "DP-3"
+    ],
+    "modules-left": ["hyprland/workspaces", "custom/spotify"],
+    "modules-center": ["clock"],
+    "modules-right": ["tray", "pulseaudio", "cpu", "memory"],
+    "hyprland/workspaces": {
+        "persistent-workspaces": {
+            "*": 2
+        },
+	"format": "{icon}",
+        "format-icons": {
+            "active": "",
+            "default": "",
+        }
+    },
+    "custom/spotify": {
+        "exec": "python ~/.scripts/waybar_mediaplayer.py --player spotify",
+        "format": "  {}",
+        "return-type": "json",
+        "on-click": "playerctl play-pause",
+        "on-scroll-up": "playerctl next"
+    },
+    "clock": {
+	"format": "{:%A %d %b %H:%M}",
+        "format-alt": "{:%Y/%m/%d %H:%M}",
+	"tooltip": false
+    },
+    "tray": {
+        "spacing": 10,
+    },
+    "pulseaudio": {
+        "format": "{volume} {icon}",
+        "format-muted": "",
+        "format-icons": {
+            "alsa_output.usb-FiiO_DigiHug_USB_Audio-01.analog-stereo": "",
+            "default": ["", "", ""]
+        },
+	"on-click": "~/.scripts/audio-switcher.sh",
+	"on-click-middle": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+	"on-click-right": "pavucontrol",
+	"max-volume": 100
+    },
+    "cpu": {
+        "interval": 10,
+        "format": "{}% ",	
+        "max-length": 10,
+        "on-click": "kitty htop"
+    },
+    "memory": {
+        "interval": 30,
+        "format": "{}% ",
+	"max-length": 10
+    }
+}
