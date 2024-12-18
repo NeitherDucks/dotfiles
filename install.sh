@@ -40,3 +40,16 @@ systemctl enable nvidia-hibernate.service
 # FSTAB stuff
 echo -e "\n# /dev/nvme0n1p1\nUUID=16D47727D47707EF	/mnt/projects   ntfs-3g		relatime,umask=0022,uid=1000,windows_names 0 0" >> /etc/fstab
 echo -e "\n# /dev/nvme1n1p1\nUUID=C03A7FAE3A7F9FD8	/mnt/games	ntfs-3g		relatime,umask=0022,uid=1000,windows_names 0 0" >> /etc/fstab
+
+# Install paru
+pushd ~
+git clone https://aur.archlinux.org/paru.git
+pushd paru
+makepkg -si
+popd
+popd
+
+# Other apps
+paru
+paru brave
+paru pypr
