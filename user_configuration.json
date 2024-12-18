@@ -124,7 +124,6 @@
     "ntp": true,
     "offline": false,
     "packages": [
-        "code",
         "usbutils",
         "waybar",
         "firefox",
